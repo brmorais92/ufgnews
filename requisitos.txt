@@ -1,0 +1,2 @@
+Python 3.5.4+
+Modulos: aiohttp, aiohttp_jinja2, cryptography, aiohttp_session[secure]
