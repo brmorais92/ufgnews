@@ -2,11 +2,13 @@ from aiohttp import web
 import aiohttp_jinja2
 import jinja2
 import aiohttp_session
+import sqlite3
 from aiohttp_session.cookie_storage import EncryptedCookieStorage
 
 import controllers.index_controller
 
 app = web.Application()
+app['db'] = sqlite3.connect('database.sqlite3')
 aiohttp_session.setup(app,
         EncryptedCookieStorage(b'Thirty  two  length  bytes  key.'))
 aiohttp_jinja2.setup(app,
