@@ -1,15 +1,19 @@
 import aiohttp_jinja2
-import jinja2
+import aiohttp
 from aiohttp_session import get_session
-import time
-#import models.noticia_model
-from models import noticia_model
-@aiohttp_jinja2.template('index.html')
-async def handle(request):
-    #name = request.match_info.get('name', "Anonymous")
-    session = await get_session(request)
-    if 'usuario' in session:
-        user = session['usuario']
-    else:
-        user = 'anonimo'
-    return {'name': user}
+import controllers.controller
+
+
+class IndexController(controllers.controller.Controller):
+    routes = aiohttp.web.RouteTableDef()
+
+    @routes.get('/')
+    @aiohttp_jinja2.template('index.html')
+    async def handle(request):
+        #name = request.match_info.get('name', "Anonymous")
+        session = await get_session(request)
+        if 'usuario' in session:
+            user = session['usuario']
+        else:
+            user = 'anonimo'
+        return {'name': user}
