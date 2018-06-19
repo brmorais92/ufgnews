@@ -7,10 +7,14 @@
 
 <body>
 
-    <h1>My First Heading. Welcome {{name}}</h1>
-
-    <p>My first paragraph.</p>
-
+    <h1>Bem-vindo {{name}}</h1>
+    {% if error %}
+    <p>
+        {{error}}
+    </p>
+    {% endif %}
+    <p><a href="login">Fazer login</a></p>
+    <p><a href="logout">Fazer logout</a></p>
 </body>
 
 </html>

@@ -8,4 +8,8 @@ from models import noticia_model
 async def handle(request):
     #name = request.match_info.get('name', "Anonymous")
     session = await get_session(request)
-    return {'name': await noticia_model.get_noticia(request)}
+    if 'usuario' in session:
+        user = session['usuario']
+    else:
+        user = 'anonimo'
+    return {'name': user}
