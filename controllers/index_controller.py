@@ -8,6 +8,7 @@ class IndexController(controllers.controller.Controller):
     routes = aiohttp.web.RouteTableDef()
 
     @routes.get('/')
+    @routes.get('/api')
     @aiohttp_jinja2.template('index.html')
     async def handle(request):
         #name = request.match_info.get('name', "Anonymous")

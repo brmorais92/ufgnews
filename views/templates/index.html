@@ -1,20 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-    <link rel="stylesheet" type="text/css" href="static/index.css">
-</head>
-
-<body>
-
-    <h1>Bem-vindo {{name}}</h1>
-    {% if error %}
-    <p>
-        {{error}}
-    </p>
-    {% endif %}
-    <p><a href="login">Fazer login</a></p>
-    <p><a href="logout">Fazer logout</a></p>
-</body>
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/index.css">
+        <title>UFGNews</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#">UFGNews</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Notícias</a>
+                <a class="nav-item nav-link" href="login">Login</a>
+                <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLogin" href="#">Login modal</a>
+                <a class="nav-item nav-link" href="logout">Logout</a>
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">
+  Launch demo modal
+</button>
+            </div>
+        </div>
+    </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Bem-vindo usuário {{name}}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+                        Login inválido.
+                    </div>
+                </div>
+            </div>
+            {% for i in range(1, 100) %}
+            <div class="row">
+                <div class="col">
+                    item
+                </div>
+                <div class="col">
+                    {{i}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    <!-- Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLoginTitle">Login</h5>
+        <button type="button" class="close" data-dismiss="modal">
+        </button>
+      </div>
+      <div class="modal-body" id="modal_login_body">
+        <form action="/login" method="post" id="login_form">
+          <div class="form-group">
+            <label for="inputUsuario">Usuário</label>
+            <input type="text" name="usuario" class="form-control" id="inputUsuario"
+                   autofocus required placeholder="Digite seu nome de usuário">
+          </div>
+          <div class="form-group">
+            <label for="inputSenha">Senha</label>
+            <input type="password" name="senha" class="form-control" id="inputSenha"
+                   placeholder="Digite sua senha" required>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary" form="login_form">Logar</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="static/js/index.js"></script>
+    </body>
 </html>
