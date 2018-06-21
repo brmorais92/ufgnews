@@ -16,5 +16,5 @@ class IndexController(controllers.controller.Controller):
         if 'usuario' in session:
             user = session['usuario']
         else:
-            user = 'anonimo'
-        return {'name': user}
+            user = None
+        return {'username': user}

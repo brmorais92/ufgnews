@@ -6,11 +6,19 @@
 </head>
 
 <body>
-    {% for error in errors %}
-    <div class="alert alert-danger" role="alert">
-        {{error}}
-    </div>
-    {% endfor %}
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLoginTitle">Login</h5>
+        <button type="button" class="close" data-dismiss="modal">
+        </button>
+      </div>
+      <div class="modal-body" id="modal_login_body">
+        {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+        {% endfor %}
         <form action="/login" method="post" id="login_form">
           <div class="form-group">
             <label for="inputUsuario">Usuário</label>
@@ -22,11 +30,14 @@
             <input type="password" name="senha" class="form-control" id="inputSenha"
                    placeholder="Digite sua senha" required>
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
         </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary" form="login_form">Logar</button>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

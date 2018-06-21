@@ -26,7 +26,7 @@ class SessionController(controllers.controller.Controller):
             return await views.login_view.handle(request, context)
         else:
             session['usuario'] = data['usuario']
-            raise aiohttp.web.HTTPFound('/')
+            return await views.login_view.handle(request, {})
 
     @routes.get('/logout')
     async def logout_get(request):

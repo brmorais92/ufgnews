@@ -16,8 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="#">Notícias</a>
-                <a class="nav-item nav-link" href="login">Login</a>
-                <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLogin" href="#">Login modal</a>
+                <a class="nav-item nav-link" data-toggle="modal" data-target="#modalLogin" href="#">Login</a>
                 <a class="nav-item nav-link" href="logout">Logout</a>
                 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">
@@ -29,64 +28,31 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1>Bem-vindo usuário {{name}}</h1>
+                    <h1>Bem-vindo usuário</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="alert alert-danger" role="alert">
-                        Login inválido.
+            {% for i in range(1, 20) %}
+            <div class="row" style="">
+                <div class="card border-info mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Confira como será o expediente da UFG nos dias de jogos da seleção brasileira</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Em 20/06/2018 às 10:49</h6>
+                        Nesta sexta-feira, 22/06, o expediente começará às 14h com funcionamento normal nos turnos vespertino e noturno
                     </div>
-                </div>
-            </div>
-            {% for i in range(1, 100) %}
-            <div class="row">
-                <div class="col">
-                    item
-                </div>
-                <div class="col">
-                    {{i}}
+                    <div class="card-footer">
+                        <span class="badge badge-pill badge-info">Primary</span>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-    <!-- Modal -->
+
 <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLoginTitle">Login</h5>
-        <button type="button" class="close" data-dismiss="modal">
-        </button>
-      </div>
-      <div class="modal-body" id="modal_login_body">
-        <form action="/login" method="post" id="login_form">
-          <div class="form-group">
-            <label for="inputUsuario">Usuário</label>
-            <input type="text" name="usuario" class="form-control" id="inputUsuario"
-                   autofocus required placeholder="Digite seu nome de usuário">
-          </div>
-          <div class="form-group">
-            <label for="inputSenha">Senha</label>
-            <input type="password" name="senha" class="form-control" id="inputSenha"
-                   placeholder="Digite sua senha" required>
-          </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary" form="login_form">Logar</button>
-      </div>
-    </div>
-  </div>
+<!-- Carregado dinamicamente de login.html -->
 </div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
-        <script src="static/js/index.js"></script>
+        <script src="static/js/login.js"></script>
     </body>
 </html>

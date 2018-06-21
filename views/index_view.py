@@ -5,5 +5,5 @@ import aiohttp_jinja2
 async def test(request):
     response = aiohttp_jinja2.render_template('index.html',
                                               request,
-                                              {'error': 'SE FUDEU'})
+                                              {})
     return response
