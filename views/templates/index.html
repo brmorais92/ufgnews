@@ -32,15 +32,23 @@
                 </div>
             </div>
             {% for i in range(1, 20) %}
-            <div class="row" style="">
-                <div class="card border-info mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Confira como será o expediente da UFG nos dias de jogos da seleção brasileira</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Em 20/06/2018 às 10:49</h6>
-                        Nesta sexta-feira, 22/06, o expediente começará às 14h com funcionamento normal nos turnos vespertino e noturno
-                    </div>
-                    <div class="card-footer">
-                        <span class="badge badge-pill badge-info">Primary</span>
+            <div class="row">
+                <div class="col">
+                    <div class="card border-info mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Confira como será o expediente da UFG nos dias de jogos da seleção brasileira</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Em 20/06/2018 às 10:49</h6>
+                            Nesta sexta-feira, 22/06, o expediente começará às 14h com funcionamento normal nos turnos vespertino e noturno
+                        </div>
+                        <div class="card-footer">
+                            <span class="badge badge-pill badge-info">Primary</span>
+                        </div>
+                        <div class="card-footer">
+                            {% if username %}
+                                <button class="btn btn-primary btn-sm">Editar</button>
+                                <button class="btn btn-danger btn-sm">Remover</button>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>
