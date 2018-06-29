@@ -9,7 +9,6 @@ $(function() {
       $.post('/login', $('#login_form').serialize(), function(data, status, xhr) {
           //encontrou algum erro no login
           if($(data).find(".alert").length) {
-              console.log("opa!");
               $('#modalLogin').html(data);
               $('#inputUsuario').trigger('focus');
           }
