@@ -14,11 +14,13 @@
         </button>
       </div>
       <div class="modal-body" id="modal_login_body">
-        {% for error in errors %}
+          <div id="error_list">
+            {% for error in errors %}
             <div class="alert alert-danger" role="alert">
                 {{error}}
             </div>
-        {% endfor %}
+            {% endfor %}
+          </div>
         <form action="/login" method="post" id="login_form">
           <div class="form-group">
             <label for="inputUsuario">Usuário</label>

@@ -12,7 +12,10 @@ async def fetch_user(request, user):
     row = c.fetchone()
     if row:
         user = models.user.data.User()
+        user.id = row[0]
         user.username = row[1]
+        user.real_name = row[2]
+        user.password = row[3]
         print('usuario existe: ' + user.username)
         return user
     else:

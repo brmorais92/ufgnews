@@ -1,6 +1,7 @@
 import aiohttp_jinja2
 import aiohttp_session
 import aiohttp
+import json
 
 import views.index_view, views.login_view
 import controllers.controller
@@ -25,7 +26,8 @@ class SessionController(controllers.controller.Controller):
         user_service = models.user.services.UserServices(request)
         user_service.user = user
         if await user_service.login():
-            session['user'] = user.username
+            session['username'] = user.username
+            session['password'] = user.password
             return await views.login_view.handle(request, {})
         else:
             context = {'errors': []}
