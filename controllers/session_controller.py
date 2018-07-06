@@ -4,8 +4,8 @@ import aiohttp
 
 import views.index_view, views.login_view
 import controllers.controller
-import models.user.sqlite_dao, models.user.data
-
+import models.user.sqlite_dao, models.user.data, models.user.services
+import models.article.sqlite_dao, models.article.data, models.article.services
 
 class SessionController(controllers.controller.Controller):
 
@@ -22,17 +22,19 @@ class SessionController(controllers.controller.Controller):
         user = models.user.data.User()
         user.username = data['username']
         user.password = data['password']
-        if await models.user.sqlite_dao.fetch_user(request, user):
+        user_service = models.user.services.UserServices(request)
+        user_service.user = user
+        if await user_service.login():
             session['user'] = user.username
             return await views.login_view.handle(request, {})
         else:
             context = {'errors': []}
-            context['errors'].append('Falha no login')
-            context['errors'].append('Segundo erro')
+            context['errors'].append('Login ou senha inválidos')
             return await views.login_view.handle(request, context)
 
     @routes.get('/logout')
     async def logout_get(request):
+        await models.article.services.ArticleServices(request).search_articles('primeira')
         session = await aiohttp_session.get_session(request)
         session.invalidate()
         raise aiohttp.web.HTTPFound('/')

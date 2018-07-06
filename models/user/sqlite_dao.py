@@ -9,9 +9,12 @@ async def fetch_user(request, user):
         query_dict['password'] = user.password
     c = request.app['db'].cursor()
     c.execute(query, query_dict)
-    if c.fetchone():
-        print('usuario existe')
-        return True
+    row = c.fetchone()
+    if row:
+        user = models.user.data.User()
+        user.username = row[1]
+        print('usuario existe: ' + user.username)
+        return user
     else:
         print('usuario não existe')
-        return False
+        return None
