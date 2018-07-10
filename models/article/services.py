@@ -1,8 +1,19 @@
 import models.article.data, models.article.sqlite_dao
+import traceback
+
 
 class ArticleServices():
     def __init__(self, request):
-        self.article_list = []
         self.request = request
-    async def search_articles(self, search_string):
-        print(await models.article.sqlite_dao.search_articles(self.request, search_string))
+
+    async def fetch_articles(self, search_string=''):
+        article_list = await models.article.sqlite_dao.search_articles(self.request, search_string)
+        return article_list
+
+    async def create_article(self, request, article):
+        try:
+            await models.article.sqlite_dao.create_article(request, article)
+            return True
+        except:
+            print(traceback.format_exc())
+            return False

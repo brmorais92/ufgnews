@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar notícia</title>
+</head>
+<body>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAddArticleTitle">Criar notícia</h5>
+        <button type="button" class="close" data-dismiss="modal">
+        </button>
+      </div>
+      <div class="modal-body" id="modal_add_article_body">
+          <div id="add_article_error_list">
+            {% for error in errors %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endfor %}
+          </div>
+        <form action="/add_article" method="post" id="add_article_form">
+          <div class="form-group">
+            <label for="input_title">Título</label>
+            <input type="text" name="title" class="form-control" id="input_title"
+                   autofocus required placeholder="Título do artigo">
+          </div>
+          <div class="form-group">
+            <label for="inputSenha">Senha</label>
+            <input type="password" name="password" class="form-control" id="inputSenha"
+                   placeholder="Digite sua senha" required>
+          </div>
+            <div class="form-group">
+                <label for="textarea_body">Corpo da notícia</label>
+                <textarea name="body" id="body" class="form-control" rows="10"></textarea>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary" form="add_article_form">Enviar</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

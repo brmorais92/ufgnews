@@ -1,9 +1,9 @@
-class Article():
-    def __init__(self, id=None, id_autor=None, titulo=None, corpo=None, 
-        enviado_timestamp=None, modificado_timestamp=None):
+class Article:
+    def __init__(self, id=None, author_id=None, title=None, body=None,
+                 submitted_timestamp=None, updated_timestamp=None):
         self.id = id
-        self.id_autor = id_autor
-        self.titulo = titulo
-        self.corpo = corpo
-        self.enviado_timestamp = enviado_timestamp
-        self.modificado_timestamp = modificado_timestamp
+        self.author_id = author_id
+        self.title = title
+        self.body = body
+        self.submitted_timestamp = submitted_timestamp
+        self.updated_timestamp = updated_timestamp

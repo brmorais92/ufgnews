@@ -8,11 +8,12 @@ from aiohttp_session.cookie_storage import EncryptedCookieStorage
 
 import controllers.index_controller
 import controllers.session_controller
-
+import controllers.article_controller
 
 app = web.Application()
 app.add_routes(controllers.session_controller.SessionController().routes)
 app.add_routes(controllers.index_controller.IndexController().routes)
+app.add_routes(controllers.article_controller.ArticleController().routes)
 app['db'] = sqlite3.connect('database.sqlite3')
 app['db'].set_trace_callback(print)
 aiohttp_session.setup(app, EncryptedCookieStorage(os.urandom(32)))
