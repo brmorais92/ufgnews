@@ -28,3 +28,10 @@ async def remove_article(request, article):
     query_dict = {'id': article.id}
     c.execute(query, query_dict)
     request.app['db'].commit()
+
+async def update_article(request, article):
+    c = request.app['db'].cursor()
+    query = "UPDATE noticias SET titulo=:title, corpo=:body, WHERE id=:id"
+    query_dict = {'id': article.id, 'title': article.title, 'body': article.body}
+    c.execute(query, query_dict)
+    request.app['db'].commit()
