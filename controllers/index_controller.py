@@ -12,17 +12,16 @@ class IndexController(controllers.controller.Controller):
 
     @routes.get('/')
     async def index_get(request):
-        article_services = models.article.services.ArticleServices(request)
-        article_list = await article_services.fetch_articles()
         session = await get_session(request)
+        article_services = models.article.services.ArticleServices(request)
+        if 'q' in request.rel_url.query:
+            search_string = request.rel_url.query['q']
+            print('opa: ' + search_string)
+        else:
+            search_string = ''
+        article_list = await article_services.fetch_articles(search_string)
         if 'username' in session:
             username = session['username']
         else:
             username = None
         return await views.index_view.handle(request, {'username': username, 'article_list': article_list})
-
-    @routes.get('/search')
-    async def search_get(request):
-        data = await request.query()
-        print(data['q'])
-        return views.index_view.handle(request, {})

@@ -14,6 +14,16 @@ async def search_articles(request, search_string):
     return article_list
 
 
+async def fetch_article(request, id):
+    c = request.app['db'].cursor()
+    query = "SELECT * FROM noticias WHERE id=:id"
+    query_dict = {'id': id}
+    c.execute(query, query_dict)
+    row = c.fetchone()
+    article = models.article.data.Article(row[0], row[1], row[2], row[3], row[4], row[5])
+    return article
+
+
 async def create_article(request, article):
     c = request.app['db'].cursor()
     query = "INSERT INTO noticias(id_autor, titulo, corpo) VALUES (:author_id, :title, :body)"

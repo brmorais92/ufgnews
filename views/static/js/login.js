@@ -14,7 +14,7 @@ function modal_login_ajax() {
               modal_login_ajax();
           }
           else {
-              $('body').load('/');
+              location.reload();
           }
           return false;
       });

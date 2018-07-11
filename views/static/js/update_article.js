@@ -23,7 +23,19 @@ function modal_update_article_ajax() {
         $('#inputTitle').trigger('focus');
     });
 }
-
-$(function() {
-  $('#modal_update_article').load('/update_article .modal-dialog', modal_update_article_ajax);
+$(document).on('click', '.update_article_button', function() {
+    let article_id = $(this).data('article-id');
+    $('#modal_update_article').load('/update_article/' + article_id + ' .modal-dialog', function() {
+        $('#update_article_form_button').click(function() {
+            console.log('HEY');
+            var dict = Object.assign({}, {'id': article_id}, $('#update_article_form').serialize());
+            console.log(dict);
+            $.post('/update_article', $('#update_article_form').serialize(), function(data) {
+                location.reload();
+            });
+            return false;
+        });
+        $('#modal_update_article').modal('show');
+    });
+    return false;
 });

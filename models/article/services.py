@@ -10,6 +10,10 @@ class ArticleServices():
         article_list = await models.article.sqlite_dao.search_articles(self.request, search_string)
         return article_list
 
+    async def fetch_article(self, id):
+        article = await models.article.sqlite_dao.fetch_article(self.request, id)
+        return article
+
     async def create_article(self, article):
         try:
             await models.article.sqlite_dao.create_article(self.request, article)

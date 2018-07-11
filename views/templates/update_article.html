@@ -8,7 +8,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalUpdateArticleTitle">Editar notícia</h5>
+        <h5 class="modal-title" id="modalUpdateArticleTitle">Editar notícia {{article.id}}</h5>
         <button type="button" class="close" data-dismiss="modal">
         </button>
       </div>
@@ -23,18 +23,19 @@
         <form action="/update_article" method="post" id="update_article_form">
           <div class="form-group">
             <label for="input_title">Título</label>
-            <input type="text" name="title" class="form-control" id="input_title"
-                   autofocus required placeholder="Título do artigo">
+            <input type="text" name="title" class="form-control" id="update_title"
+                   autofocus required placeholder="Título do artigo" value="{{article.title}}">
           </div>
             <div class="form-group">
                 <label for="textarea_body">Corpo da notícia</label>
-                <textarea name="body" id="body" class="form-control" rows="10" required></textarea>
+                <textarea name="body" id="update_body" class="form-control" rows="10" required>{{article.body}}
+                </textarea>
             </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="submit" class="btn btn-primary" form="add_article_form">Editar</button>
+        <button type="submit" class="btn btn-primary" id="update_article_form_button">Editar</button>
       </div>
     </div>
   </div>

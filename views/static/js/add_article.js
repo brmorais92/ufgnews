@@ -14,7 +14,7 @@ function modal_add_article_ajax() {
               modal_add_article_ajax();
           }
           else {
-              $('body').load('/');
+              location.reload();
           }
           return false;
       });
