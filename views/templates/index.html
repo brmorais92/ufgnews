@@ -52,10 +52,9 @@
                         </div>
                         {% if username %}
                         <div class="card-footer">
-
                                 <button class="btn btn-primary btn-sm">Editar</button>
-                                <button class="btn btn-danger btn-sm">Remover</button>
-
+                                <button class="btn btn-danger btn-sm remove_article_button"
+                                data-article-id={{article.id}} data-target="#modal_remove_article">Remover</button>
                         </div>
                         {% endif %}
                     </div>
@@ -70,10 +69,14 @@
 <div class="modal fade" id="modal_add_article" tabindex="-1" role="dialog">
 <!-- Carregado dinamicamente de add_article.html -->
 </div>
+<div class="modal fade" id="modal_remove_article" tabindex="-1" role="dialog">
+    <!-- Carregado dinamicamente de remove_article.html -->
+</div>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="static/js/login.js"></script>
         <script src="static/js/add_article.js"></script>
+        <script src="static/js/remove_article.js"></script>
     </body>
 </html>

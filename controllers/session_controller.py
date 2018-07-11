@@ -26,9 +26,9 @@ class SessionController(controllers.controller.Controller):
         user_service = models.user.services.UserServices(request)
         user_service.user = user
         if await user_service.login():
-            session['user_id'] = user.id
-            session['username'] = user.username
-            session['password'] = user.password
+            session['user_id'] = user_service.user.id
+            session['username'] = user_service.user.username
+            session['password'] = user_service.user.password
             return await views.login_view.handle(request, {})
         else:
             context = {'errors': []}

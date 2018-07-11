@@ -17,3 +17,11 @@ class ArticleServices():
         except:
             print(traceback.format_exc())
             return False
+
+    async def remove_article(self, request, article):
+        try:
+            await models.article.sqlite_dao.remove_article(request, article)
+            return True
+        except:
+            print(traceback.format_exc())
+            return False

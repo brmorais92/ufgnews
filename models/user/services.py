@@ -6,7 +6,8 @@ class UserServices:
         self.user = None
         self.request = request
     async def login(self):
-        if await models.user.sqlite_dao.fetch_user(self.request, self.user):
+        self.user = await models.user.sqlite_dao.fetch_user(self.request, self.user)
+        if self.user:
             return True
         else:
             return False

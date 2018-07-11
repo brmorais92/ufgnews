@@ -1,5 +1,6 @@
 import models.article.data
 
+
 async def search_articles(request, search_string):
     c = request.app['db'].cursor()
     article_list = []
@@ -12,10 +13,18 @@ async def search_articles(request, search_string):
         article_list.append(article)
     return article_list
 
+
 async def create_article(request, article):
     c = request.app['db'].cursor()
     query = "INSERT INTO noticias(id_autor, titulo, corpo) VALUES (:author_id, :title, :body)"
     query_dict = {'author_id': article.author_id, 'title': article.title, 'body': article.body}
     c.execute(query, query_dict)
     request.app['db'].commit()
-    print('inserido')
+
+
+async def remove_article(request, article):
+    c = request.app['db'].cursor()
+    query = "DELETE FROM noticias WHERE id=:id"
+    query_dict = {'id': article.id}
+    c.execute(query, query_dict)
+    request.app['db'].commit()
